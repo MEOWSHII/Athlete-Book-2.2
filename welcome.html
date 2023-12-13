@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            background-color: rgba(167, 196, 254, 0.826);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 15px;
+            background-color: rgba(237, 238, 253, 0.984);
+            border: 2px solid #313233;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            /* Added position relative for positioning the logout button */
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #dddfe2;
+            padding-bottom: 5px;
+            color: #0f1010;
+        }
+
+    
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            color: #a82b1b;
+            
+            border: none;
+            border-radius: 7px;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        h2:hover {
+            color: #6709d2;
+        }
+
+        strong   {
+            color: #453e6c;
+        }
+
+        button {
+            background-color: #6c4be3;
+            color: #fff;
+            border: none;
+            border-radius: 7px;
+            padding: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ef5281;
+        }
+        .welcome-message {
+            margin-bottom: 20px;
+        }
+
+        /* Improved alignment for form labels and input boxes */
+        form {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            gap: 10px;
+        }
+
+        section {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #21192d;
+            
+        }
+
+        input {
+            width: auto;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #dddfe2;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        /* Logout button styles */
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="profile-container">
+        <!-- Logout button added -->
+        <button class="logout-button" onclick="logout()">Logout</button>
+        
+        <script>
+            function updateProfile() {
+                // Redirect to update.html
+                window.location.href = 'update.html';
+            }
+        </script>
+
+        <h1>  Athlete Profile</h1>
+
+        <section id="basic-info">
+            <h2>Basic Information</h2>
+            <p><strong>Name:</strong> <span id="athlete-name">Paul George</span></p>
+            <p><strong>Birthdate:</strong> <span id="athlete-birthdate"> 1991-05-02</span></p>
+            <p><strong>Gender:</strong> <span id="athlete-gender"> Female</span></p>
+            <p><strong>Sport:</strong> <span id="athlete-sport"> Baseball</span></p>
+            <p><strong>Country:</strong> <span id="athlete-country"> USA</span></p>
+            <p><strong>Achievement:</strong> <span id="athlete-achievement">8th-time NBA All-Star, 6th-time All-NBA Team,
+                    4th-time NBA All- Defensive Team.</span></p>
+        </section>
+
+        <button type="button" onclick="updateProfile()">Update Profile</button>
+
+        <script>
+
+            function logout() {
+                // Redirect to update.html
+                window.location.href = 'index.html';
+            }
+
+            function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+                
+                
+
+            }
+
+
+            // Get the name parameter from the URL
+            var name = getParameterByName('name');
+            var birthdate = getParameterByName('birthdate');
+            var gender = getParameterByName('gender');
+            var sport = getParameterByName('sport');
+            var country = getParameterByName('country');
+            var achievement = getParameterByName('achievement');
+
+
+            // Display user information on the page
+
+            document.getElementById("athlete-name").innerText = name || 'N/A';
+            document.getElementById("athlete-birthdate").innerText = birthdate || 'N/A';
+            document.getElementById("athlete-gender").innerText = gender || 'N/A';
+            document.getElementById("athlete-sport").innerText = sport || 'N/A';
+            document.getElementById("athlete-country").innerText = country || 'N/A';
+            document.getElementById("athlete-achievement").innerText = achievement || 'N/A';
+
+        </script>
+
+    </div>
+
+</body>
+
+</html>
